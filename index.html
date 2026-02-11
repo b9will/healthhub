@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Good Health Hub — Your Unified Health & Wellness Platform</title>
+<title>Health Hub — Trusted Health Education, All in One Place</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -14,20 +14,27 @@
   --teal: #2A9D8F;
   --teal-light: #4ABFBF;
   --teal-dark: #1F7A6E;
+  --teal-bg: rgba(42,157,143,0.06);
   --lavender: #B8A9C9;
   --lavender-light: #D4C8E2;
   --lavender-pale: #EDE8F3;
   --lavender-dark: #8E7BA8;
+  --lavender-bg: rgba(184,169,201,0.08);
   --navy: #1B2A4A;
   --navy-light: #2D3E5E;
   --slate: #4A5568;
+  --slate-light: #718096;
+  --grey-50: #FAFBFC;
   --grey-100: #F7F8FA;
   --grey-200: #EDF0F4;
   --grey-300: #D1D5DB;
   --white: #FFFFFF;
   --coral: #F4845F;
   --coral-light: #F6A58D;
+  --coral-bg: rgba(244,132,95,0.06);
   --amber: #F2C94C;
+  --green: #48BB78;
+  --green-bg: rgba(72,187,120,0.08);
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'DM Sans', -apple-system, sans-serif;
   --radius-sm: 12px;
@@ -45,1108 +52,424 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ===== UTILITY ===== */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 
 /* ===== NAV ===== */
 nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding: 20px 0;
-  transition: all 0.4s ease;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 0; transition: all 0.4s ease;
 }
 nav.scrolled {
   background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   padding: 14px 0;
   box-shadow: 0 1px 20px rgba(27,42,74,0.06);
 }
-nav .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+nav .container { display: flex; align-items: center; justify-content: space-between; }
 .nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.25rem;
-  color: var(--navy);
-  text-decoration: none;
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-weight: 600; font-size: 1.25rem;
+  color: var(--navy); text-decoration: none;
 }
-.nav-logo .logo-icon {
-  width: 36px;
-  height: 36px;
+.logo-icon {
+  width: 36px; height: 36px;
   background: linear-gradient(135deg, var(--teal), var(--lavender));
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1rem;
-  font-weight: 700;
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 1rem; font-weight: 700;
 }
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  list-style: none;
-}
-.nav-links a {
-  text-decoration: none;
-  color: var(--slate);
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: color 0.3s;
-}
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--slate); font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
 .nav-links a:hover { color: var(--teal); }
 .nav-cta {
-  background: var(--navy);
-  color: var(--white) !important;
-  padding: 10px 24px;
-  border-radius: 50px;
-  font-weight: 600 !important;
-  transition: all 0.3s !important;
+  background: var(--navy); color: var(--white) !important;
+  padding: 10px 24px; border-radius: 50px; font-weight: 600 !important; transition: all 0.3s !important;
 }
 .nav-cta:hover { background: var(--teal) !important; transform: translateY(-1px); }
 .mobile-menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 32px;
-  height: 32px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
+  display: none; background: none; border: none; cursor: pointer;
+  width: 32px; height: 32px; flex-direction: column;
+  justify-content: center; align-items: center; gap: 5px;
+  z-index: 101; position: relative;
 }
-.mobile-menu-btn span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--navy);
-  border-radius: 2px;
-  transition: all 0.3s;
+.mobile-menu-btn span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.3s; }
+.mobile-menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
+.mobile-menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile Menu */
+.mobile-overlay {
+  position: fixed; inset: 0; background: rgba(27,42,74,0.3);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  z-index: 98; opacity: 0; pointer-events: none; transition: opacity 0.35s ease;
+}
+.mobile-overlay.open { opacity: 1; pointer-events: auto; }
+.mobile-menu {
+  position: fixed; top: 0; right: 0; width: 300px; max-width: 85vw;
+  height: 100vh; height: 100dvh; background: var(--white); z-index: 99;
+  padding: 100px 32px 40px; display: flex; flex-direction: column;
+  transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: -10px 0 40px rgba(27,42,74,0.08); overflow-y: auto;
+}
+.mobile-menu.open { transform: translateX(0); }
+.mobile-menu-links { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: auto; }
+.mobile-menu-links a { display: block; text-decoration: none; color: var(--navy); font-size: 1.1rem; font-weight: 500; padding: 14px 16px; border-radius: 14px; transition: all 0.2s; }
+.mobile-menu-links a:hover { background: var(--grey-100); color: var(--teal); }
+.mobile-menu-cta { display: block; text-align: center; padding: 16px 24px; background: var(--teal); color: var(--white); border-radius: 50px; font-size: 1rem; font-weight: 600; text-decoration: none; margin: 32px 0 24px; transition: all 0.3s; }
+.mobile-menu-cta:hover { background: var(--teal-dark); }
+.mobile-menu-socials { display: flex; gap: 12px; justify-content: center; padding-top: 20px; border-top: 1px solid var(--grey-200); }
+.mobile-social-link { width: 44px; height: 44px; border-radius: 12px; background: var(--grey-100); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.2s; }
+.mobile-social-link:hover { background: var(--teal-bg); }
+.mobile-social-link svg { width: 20px; height: 20px; fill: var(--navy); transition: fill 0.2s; }
+.mobile-social-link:hover svg { fill: var(--teal); }
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 16px 36px; background: var(--teal); color: var(--white);
+  border: none; border-radius: 50px; font-family: var(--font-body);
+  font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; text-decoration: none;
+}
+.btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(42,157,143,0.3); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 16px 36px; background: transparent; color: var(--navy);
+  border: 1.5px solid var(--grey-300); border-radius: 50px;
+  font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+  cursor: pointer; transition: all 0.3s; text-decoration: none;
+}
+.btn-secondary:hover { border-color: var(--navy); transform: translateY(-2px); }
+.section-label {
+  font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--teal); margin-bottom: 16px;
 }
 
 /* ===== HERO ===== */
 .hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+  min-height: 100vh; display: flex; align-items: center;
   padding: 120px 0 80px;
   background: linear-gradient(180deg, var(--lavender-pale) 0%, var(--white) 60%);
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
 }
 .hero::before {
-  content: '';
-  position: absolute;
-  top: -200px;
-  right: -200px;
-  width: 600px;
-  height: 600px;
+  content: ''; position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px;
   background: radial-gradient(circle, rgba(74,191,191,0.08) 0%, transparent 70%);
   border-radius: 50%;
 }
 .hero::after {
-  content: '';
-  position: absolute;
-  bottom: -100px;
-  left: -150px;
-  width: 400px;
-  height: 400px;
+  content: ''; position: absolute; bottom: -100px; left: -150px;
+  width: 400px; height: 400px;
   background: radial-gradient(circle, rgba(184,169,201,0.12) 0%, transparent 70%);
   border-radius: 50%;
 }
-.hero .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
+.hero .container { display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 1; }
 .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 20px;
-  background: rgba(42,157,143,0.08);
-  border: 1px solid rgba(42,157,143,0.15);
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--teal-dark);
-  margin-bottom: 32px;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 20px; background: rgba(42,157,143,0.08);
+  border: 1px solid rgba(42,157,143,0.15); border-radius: 50px;
+  font-size: 0.85rem; font-weight: 500; color: var(--teal-dark); margin-bottom: 32px;
 }
-.hero-badge .dot {
-  width: 8px;
-  height: 8px;
-  background: var(--teal);
-  border-radius: 50%;
-  animation: pulse-dot 2s infinite;
-}
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.3); }
-}
+.hero-badge .dot { width: 8px; height: 8px; background: var(--teal); border-radius: 50%; animation: pulse-dot 2s infinite; }
+@keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
 .hero h1 {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--navy);
-  max-width: 800px;
-  margin-bottom: 24px;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700; line-height: 1.1; color: var(--navy);
+  max-width: 800px; margin-bottom: 24px; letter-spacing: -0.02em;
 }
 .hero h1 .gradient-text {
   background: linear-gradient(135deg, var(--teal), var(--lavender-dark));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-.hero p {
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
-  color: var(--slate);
-  max-width: 560px;
-  line-height: 1.65;
-  margin-bottom: 40px;
-}
-.hero-btns {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 64px;
-}
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 16px 36px;
-  background: var(--teal);
-  color: var(--white);
-  border: none;
-  border-radius: 50px;
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-}
-.btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(42,157,143,0.3); }
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 16px 36px;
-  background: transparent;
-  color: var(--navy);
-  border: 1.5px solid var(--grey-300);
-  border-radius: 50px;
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-}
-.btn-secondary:hover { border-color: var(--navy); transform: translateY(-2px); }
+.hero p { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--slate); max-width: 580px; line-height: 1.65; margin-bottom: 40px; }
+.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 64px; }
 
-/* Desktop Mockup */
-.desktop-mockup {
-  width: 100%;
-  max-width: 960px;
-  position: relative;
-}
+/* ===== DESKTOP MOCKUP (Patient Course Browse) ===== */
+.desktop-mockup { width: 100%; max-width: 960px; position: relative; }
 .desktop-frame {
-  background: var(--navy);
-  border-radius: var(--radius-lg);
+  background: var(--navy); border-radius: var(--radius-lg);
   padding: 12px 12px 0;
   box-shadow: 0 40px 80px rgba(27,42,74,0.15), 0 10px 30px rgba(27,42,74,0.08);
 }
-.desktop-dots {
-  display: flex;
-  gap: 6px;
-  padding: 6px 8px 14px;
-}
-.desktop-dots span {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
+.desktop-dots { display: flex; gap: 6px; padding: 6px 8px 14px; }
+.desktop-dots span { width: 10px; height: 10px; border-radius: 50%; }
 .desktop-dots span:nth-child(1) { background: #FF605C; }
 .desktop-dots span:nth-child(2) { background: #FFBD44; }
 .desktop-dots span:nth-child(3) { background: #00CA4E; }
 .desktop-screen {
-  background: var(--grey-100);
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
-  overflow: hidden;
-  min-height: 480px;
-  position: relative;
+  background: var(--grey-100); border-radius: var(--radius-md) var(--radius-md) 0 0;
+  overflow: hidden; padding: 24px;
 }
 
-/* Fake Dashboard UI */
-.fake-dash {
-  display: flex;
-  height: 480px;
+/* Fake Course Browse UI */
+.browse-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.browse-logo { display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 600; font-size: 0.9rem; color: var(--navy); }
+.browse-logo-mark { width: 28px; height: 28px; background: linear-gradient(135deg, var(--teal), var(--lavender)); border-radius: 8px; }
+.browse-nav { display: flex; gap: 18px; }
+.browse-nav span { font-size: 0.75rem; color: var(--slate-light); font-weight: 500; }
+.browse-nav span.active { color: var(--teal); font-weight: 600; }
+.browse-user { display: flex; align-items: center; gap: 8px; }
+.browse-avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), var(--teal-light)); }
+.browse-search {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 18px; background: var(--white); border: 1px solid var(--grey-200);
+  border-radius: 14px; margin-bottom: 20px; font-size: 0.8rem; color: var(--grey-300);
 }
-.fake-sidebar {
-  width: 220px;
-  background: var(--white);
-  padding: 24px 16px;
-  border-right: 1px solid var(--grey-200);
-  flex-shrink: 0;
+.browse-filters { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.browse-filter {
+  padding: 6px 14px; border-radius: 20px; font-size: 0.65rem;
+  font-weight: 600; border: none; cursor: pointer;
 }
-.fake-sidebar-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 32px;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--navy);
+.browse-filter.active { background: var(--teal); color: white; }
+.browse-filter:not(.active) { background: var(--white); color: var(--slate); border: 1px solid var(--grey-200); }
+.browse-section-title { font-size: 0.85rem; font-weight: 600; color: var(--navy); margin-bottom: 14px; }
+.browse-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.course-card {
+  background: var(--white); border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--grey-200); transition: all 0.2s;
 }
-.fake-sidebar-logo .mini-icon {
-  width: 28px;
-  height: 28px;
-  background: linear-gradient(135deg, var(--teal), var(--lavender));
-  border-radius: 8px;
+.course-card:hover { box-shadow: 0 4px 16px rgba(27,42,74,0.06); transform: translateY(-2px); }
+.course-thumb {
+  height: 90px; display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; position: relative;
 }
-.fake-nav-item {
-  padding: 10px 12px;
-  border-radius: 10px;
-  font-size: 0.8rem;
-  color: var(--slate);
-  margin-bottom: 4px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.course-thumb-tag {
+  position: absolute; top: 8px; left: 8px;
+  padding: 3px 8px; border-radius: 6px; font-size: 0.55rem;
+  font-weight: 700; color: white;
 }
-.fake-nav-item.active {
-  background: rgba(42,157,143,0.08);
-  color: var(--teal-dark);
-  font-weight: 600;
-}
-.fake-nav-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 3px;
-  background: var(--grey-300);
-}
-.fake-nav-item.active .fake-nav-dot { background: var(--teal); }
-.fake-main {
-  flex: 1;
-  padding: 24px;
-  overflow: hidden;
-}
-.fake-topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
-.fake-greeting h3 {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--navy);
-}
-.fake-greeting p { font-size: 0.75rem; color: var(--slate); margin-top: 2px; }
-.fake-search {
-  width: 200px;
-  height: 34px;
-  background: var(--grey-100);
-  border: 1px solid var(--grey-200);
-  border-radius: 10px;
-}
-.fake-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-bottom: 20px;
-}
-.fake-stat-card {
-  background: var(--white);
-  border: 1px solid var(--grey-200);
-  border-radius: var(--radius-sm);
-  padding: 16px;
-}
-.fake-stat-label { font-size: 0.65rem; color: var(--slate); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
-.fake-stat-value { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--navy); }
-.fake-stat-change { font-size: 0.65rem; color: var(--teal); margin-top: 4px; }
-.fake-appointments {
-  background: var(--white);
-  border: 1px solid var(--grey-200);
-  border-radius: var(--radius-sm);
-  padding: 16px;
-}
-.fake-appointments h4 { font-size: 0.8rem; font-weight: 600; margin-bottom: 12px; color: var(--navy); }
-.fake-appt-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--grey-100);
-}
-.fake-appt-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.fake-appt-info { flex: 1; }
-.fake-appt-info .name { font-size: 0.75rem; font-weight: 600; color: var(--navy); }
-.fake-appt-info .type { font-size: 0.65rem; color: var(--slate); }
-.fake-appt-time {
-  font-size: 0.7rem;
-  padding: 4px 10px;
-  background: var(--lavender-pale);
-  color: var(--lavender-dark);
-  border-radius: 20px;
-  font-weight: 500;
-}
+.course-card-body { padding: 12px; }
+.course-card-title { font-size: 0.75rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; line-height: 1.3; }
+.course-card-author { font-size: 0.6rem; color: var(--slate-light); margin-bottom: 8px; }
+.course-card-meta { display: flex; justify-content: space-between; align-items: center; }
+.course-card-price { font-size: 0.7rem; font-weight: 700; color: var(--teal); }
+.course-card-info { font-size: 0.55rem; color: var(--slate-light); }
+.course-card-rating { font-size: 0.6rem; color: var(--amber); }
 
-/* ===== PROBLEM SECTION ===== */
-.problem {
-  padding: 120px 0;
-  background: var(--white);
-}
-.section-label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--teal);
-  margin-bottom: 16px;
-}
-.problem .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
+/* ===== PROBLEM ===== */
+.problem { padding: 120px 0; background: var(--white); }
+.problem .container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .problem-text h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  line-height: 1.15;
-  color: var(--navy);
-  margin-bottom: 24px;
+  font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700; line-height: 1.15; color: var(--navy); margin-bottom: 24px;
 }
-.problem-text p {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--slate);
-  margin-bottom: 16px;
-}
-.problem-visual {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
+.problem-text p { font-size: 1.05rem; line-height: 1.7; color: var(--slate); margin-bottom: 16px; }
+.problem-visual { display: flex; flex-direction: column; gap: 16px; }
 .pain-card {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  padding: 24px;
-  background: var(--grey-100);
-  border-radius: var(--radius-md);
-  border-left: 4px solid transparent;
-  transition: all 0.4s ease;
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 24px; background: var(--grey-100); border-radius: var(--radius-md);
+  border-left: 4px solid transparent; transition: all 0.4s ease;
 }
 .pain-card:nth-child(1) { border-left-color: var(--coral); }
 .pain-card:nth-child(2) { border-left-color: var(--amber); }
 .pain-card:nth-child(3) { border-left-color: var(--lavender); }
-.pain-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  flex-shrink: 0;
-}
+.pain-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
 .pain-card:nth-child(1) .pain-icon { background: rgba(244,132,95,0.12); }
 .pain-card:nth-child(2) .pain-icon { background: rgba(242,201,76,0.15); }
 .pain-card:nth-child(3) .pain-icon { background: rgba(184,169,201,0.2); }
 .pain-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
 .pain-card p { font-size: 0.85rem; color: var(--slate); line-height: 1.5; }
 
-/* ===== SOLUTION / PILLARS ===== */
-.solution {
-  padding: 120px 0;
-  background: linear-gradient(180deg, var(--grey-100) 0%, var(--white) 100%);
+/* ===== HOW IT WORKS (Two Audiences) ===== */
+.how-it-works { padding: 120px 0; background: linear-gradient(180deg, var(--grey-100) 0%, var(--white) 100%); }
+.how-it-works .container { text-align: center; }
+.how-it-works h2 {
+  font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700; color: var(--navy); margin-bottom: 16px;
 }
-.solution .container { text-align: center; }
-.solution h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 16px;
+.how-it-works .subtitle { font-size: 1.1rem; color: var(--slate); max-width: 600px; margin: 0 auto 64px; line-height: 1.6; }
+.audience-split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: left; }
+.audience-card {
+  padding: 40px 36px; border-radius: var(--radius-lg);
+  position: relative; overflow: hidden; transition: transform 0.4s;
 }
-.solution .subtitle {
-  font-size: 1.1rem;
-  color: var(--slate);
-  max-width: 600px;
-  margin: 0 auto 64px;
-  line-height: 1.6;
-}
-.pillars {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  text-align: left;
-}
-.pillar {
-  padding: 40px 32px;
-  border-radius: var(--radius-lg);
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.4s ease;
-}
-.pillar:hover { transform: translateY(-4px); }
-.pillar:nth-child(1) {
+.audience-card:hover { transform: translateY(-4px); }
+.audience-card:nth-child(1) {
   background: linear-gradient(160deg, rgba(42,157,143,0.06) 0%, rgba(42,157,143,0.02) 100%);
   border: 1px solid rgba(42,157,143,0.12);
 }
-.pillar:nth-child(2) {
+.audience-card:nth-child(2) {
   background: linear-gradient(160deg, rgba(184,169,201,0.1) 0%, rgba(184,169,201,0.03) 100%);
   border: 1px solid rgba(184,169,201,0.2);
 }
-.pillar:nth-child(3) {
-  background: linear-gradient(160deg, rgba(244,132,95,0.06) 0%, rgba(244,132,95,0.02) 100%);
-  border: 1px solid rgba(244,132,95,0.12);
+.audience-emoji { font-size: 2.5rem; margin-bottom: 20px; }
+.audience-card h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+.audience-card > p { font-size: 0.95rem; color: var(--slate); line-height: 1.65; margin-bottom: 24px; }
+.audience-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.audience-features li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.88rem; color: var(--slate); line-height: 1.5;
 }
-.pillar-number {
-  font-family: var(--font-display);
-  font-size: 3.5rem;
-  font-weight: 700;
-  line-height: 1;
-  margin-bottom: 20px;
+.audience-features li::before {
+  content: '✓'; font-weight: 700; flex-shrink: 0;
+  width: 22px; height: 22px; border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; font-size: 0.65rem;
 }
-.pillar:nth-child(1) .pillar-number { color: rgba(42,157,143,0.15); }
-.pillar:nth-child(2) .pillar-number { color: rgba(184,169,201,0.25); }
-.pillar:nth-child(3) .pillar-number { color: rgba(244,132,95,0.15); }
-.pillar h3 {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: 12px;
-}
-.pillar p {
-  font-size: 0.95rem;
-  color: var(--slate);
-  line-height: 1.65;
-}
+.audience-card:nth-child(1) .audience-features li::before { background: var(--teal-bg); color: var(--teal); }
+.audience-card:nth-child(2) .audience-features li::before { background: var(--lavender-bg); color: var(--lavender-dark); }
 
-/* ===== FEATURES + PHONE MOCKUP ===== */
+/* ===== FEATURES + PHONE MOCKUP (Practitioner View) ===== */
 .features {
-  padding: 120px 0;
-  background: var(--navy);
-  color: var(--white);
-  position: relative;
-  overflow: hidden;
+  padding: 120px 0; background: var(--navy); color: var(--white);
+  position: relative; overflow: hidden;
 }
 .features::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
   background: radial-gradient(ellipse at 30% 50%, rgba(42,157,143,0.1) 0%, transparent 60%),
               radial-gradient(ellipse at 70% 80%, rgba(184,169,201,0.08) 0%, transparent 50%);
 }
-.features .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
+.features .container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
 .features .section-label { color: var(--teal-light); }
-.features h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 24px;
-  line-height: 1.15;
-}
-.features-text p {
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.65);
-  line-height: 1.7;
-  margin-bottom: 40px;
-}
-.feature-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.feature-item {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
+.features h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; color: var(--white); margin-bottom: 24px; line-height: 1.15; }
+.features-text p { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 40px; }
+.feature-list { display: flex; flex-direction: column; gap: 20px; }
+.feature-item { display: flex; gap: 16px; align-items: flex-start; }
 .feature-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  flex-shrink: 0;
+  width: 40px; height: 40px; border-radius: 12px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;
 }
 .feature-item h4 { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 4px; }
 .feature-item p { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
 
-/* Phone Mockup — iPhone 15 Pro ratio (393:852 ≈ 1:2.168) */
-.phone-mockup-wrapper {
-  display: flex;
-  justify-content: center;
-}
+/* Phone Mockup — iPhone 15 Pro ratio */
+.phone-mockup-wrapper { display: flex; justify-content: center; }
 .phone-frame {
-  width: 272px;
-  height: 590px; /* 272 × 2.168 */
-  background: #1a1a1a;
-  border-radius: 48px;
-  padding: 10px;
+  width: 272px; height: 590px;
+  background: #1a1a1a; border-radius: 48px; padding: 10px;
   box-shadow: 0 40px 80px rgba(0,0,0,0.4), inset 0 0 0 1.5px rgba(255,255,255,0.12);
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
 }
-/* Dynamic Island */
 .phone-notch {
-  width: 84px;
-  height: 24px;
-  background: #1a1a1a;
-  border-radius: 20px;
-  margin: 0 auto;
-  position: absolute;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
+  width: 84px; height: 24px; background: #1a1a1a; border-radius: 20px;
+  margin: 0 auto; position: absolute; top: 16px; left: 50%; transform: translateX(-50%); z-index: 5;
 }
-/* Side button detail */
-.phone-frame::before {
-  content: '';
-  position: absolute;
-  right: -2px;
-  top: 140px;
-  width: 3px;
-  height: 50px;
-  background: #2a2a2a;
-  border-radius: 2px 0 0 2px;
-}
-.phone-frame::after {
-  content: '';
-  position: absolute;
-  left: -2px;
-  top: 120px;
-  width: 3px;
-  height: 32px;
-  background: #2a2a2a;
-  border-radius: 0 2px 2px 0;
-  box-shadow: 0 44px 0 #2a2a2a;
-}
-.phone-screen {
-  background: var(--white);
-  border-radius: 40px;
-  overflow: hidden;
-  height: 100%;
-  position: relative;
-}
-.phone-status-bar {
-  display: flex;
-  justify-content: space-between;
-  padding: 14px 24px 8px;
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: var(--navy);
-}
+.phone-frame::before { content: ''; position: absolute; right: -2px; top: 140px; width: 3px; height: 50px; background: #2a2a2a; border-radius: 2px 0 0 2px; }
+.phone-frame::after { content: ''; position: absolute; left: -2px; top: 120px; width: 3px; height: 32px; background: #2a2a2a; border-radius: 0 2px 2px 0; box-shadow: 0 44px 0 #2a2a2a; }
+.phone-screen { background: var(--white); border-radius: 40px; overflow: hidden; height: 100%; position: relative; }
+.phone-status-bar { display: flex; justify-content: space-between; padding: 14px 24px 8px; font-size: 0.65rem; font-weight: 600; color: var(--navy); }
 .phone-content { padding: 0 16px 16px; }
-/* Home indicator bar */
-.phone-home-indicator {
-  width: 100px;
-  height: 4px;
-  background: var(--navy);
-  opacity: 0.15;
-  border-radius: 4px;
-  margin: 12px auto 8px;
-}
-.phone-header {
-  margin-bottom: 16px;
-}
-.phone-header h4 {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: 4px;
-}
-.phone-header p { font-size: 0.7rem; color: var(--slate); }
-.phone-search-bar {
-  height: 36px;
-  background: var(--grey-100);
-  border-radius: 12px;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  padding: 0 12px;
-  font-size: 0.7rem;
-  color: var(--grey-300);
-}
-.phone-categories {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-  overflow: hidden;
-}
-.phone-cat {
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.65rem;
-  font-weight: 600;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.phone-cat.active { background: var(--teal); color: white; }
-.phone-cat:not(.active) { background: var(--grey-100); color: var(--slate); }
-.phone-practitioner-card {
-  display: flex;
-  gap: 12px;
-  padding: 14px;
-  background: var(--grey-100);
-  border-radius: 16px;
-  margin-bottom: 10px;
-  align-items: center;
-}
-.phone-prac-avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  flex-shrink: 0;
-}
-.phone-prac-info { flex: 1; }
-.phone-prac-info .name { font-size: 0.75rem; font-weight: 600; color: var(--navy); }
-.phone-prac-info .spec { font-size: 0.6rem; color: var(--slate); margin-top: 2px; }
-.phone-prac-info .rating { font-size: 0.6rem; color: var(--amber); margin-top: 3px; }
-.phone-book-btn {
-  padding: 6px 14px;
-  background: var(--teal);
-  color: white;
-  border-radius: 10px;
-  font-size: 0.6rem;
-  font-weight: 600;
-  flex-shrink: 0;
-}
-.phone-bottom-nav {
-  display: flex;
-  justify-content: space-around;
-  padding: 10px 0 6px;
-  border-top: 1px solid var(--grey-200);
-  margin-top: 12px;
-}
-.phone-nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  font-size: 0.55rem;
-  color: var(--grey-300);
-}
-.phone-nav-item.active { color: var(--teal); }
-.phone-nav-icon {
-  width: 20px;
-  height: 20px;
-  border-radius: 6px;
-  background: currentColor;
-  opacity: 0.3;
-}
-.phone-nav-item.active .phone-nav-icon { opacity: 0.5; }
+.phone-home-indicator { width: 100px; height: 4px; background: var(--navy); opacity: 0.15; border-radius: 4px; margin: 8px auto; }
 
-/* ===== HOW IT WORKS ===== */
-.how-it-works {
-  padding: 120px 0;
-  background: var(--white);
+/* Practitioner Phone UI */
+.prac-header { margin-bottom: 14px; }
+.prac-header h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+.prac-header p { font-size: 0.65rem; color: var(--slate-light); }
+.prac-stat-row { display: flex; gap: 8px; margin-bottom: 14px; }
+.prac-stat {
+  flex: 1; background: var(--grey-100); border-radius: 12px; padding: 10px 8px; text-align: center;
 }
-.how-it-works .container { text-align: center; }
-.how-it-works h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 16px;
+.prac-stat .val { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--navy); }
+.prac-stat .lbl { font-size: 0.5rem; color: var(--slate-light); margin-top: 2px; }
+.prac-section-label { font-size: 0.65rem; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+.prac-course-item {
+  display: flex; gap: 10px; align-items: center;
+  padding: 10px; background: var(--grey-100); border-radius: 14px; margin-bottom: 8px;
 }
-.how-it-works .subtitle {
-  font-size: 1.05rem;
-  color: var(--slate);
-  max-width: 500px;
-  margin: 0 auto 32px;
-  line-height: 1.6;
+.prac-course-thumb { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+.prac-course-info { flex: 1; }
+.prac-course-info .title { font-size: 0.7rem; font-weight: 600; color: var(--navy); }
+.prac-course-info .meta { font-size: 0.55rem; color: var(--slate-light); margin-top: 2px; }
+.prac-course-revenue { font-size: 0.65rem; font-weight: 700; color: var(--teal); flex-shrink: 0; }
+.prac-earnings {
+  background: linear-gradient(135deg, var(--teal), var(--teal-light));
+  border-radius: 14px; padding: 14px; margin-bottom: 10px; color: white; text-align: center;
 }
-.tabs {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 56px;
+.prac-earnings .amount { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; }
+.prac-earnings .lbl { font-size: 0.6rem; opacity: 0.8; margin-top: 2px; }
+.prac-bottom-nav {
+  display: flex; justify-content: space-around; padding: 8px 0 4px;
+  border-top: 1px solid var(--grey-200); margin-top: 8px;
 }
-.tab-btn {
-  padding: 12px 28px;
-  border-radius: 50px;
-  border: 1.5px solid var(--grey-300);
-  background: transparent;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--slate);
-  cursor: pointer;
+.prac-bnav { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 0.5rem; color: var(--grey-300); }
+.prac-bnav.active { color: var(--teal); }
+.prac-bnav-icon { font-size: 0.85rem; }
+
+/* ===== WHAT YOU'LL FIND (Content Types) ===== */
+.content-types { padding: 120px 0; background: var(--white); }
+.content-types .container { text-align: center; }
+.content-types h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--navy); margin-bottom: 16px; }
+.content-types .subtitle { font-size: 1.1rem; color: var(--slate); max-width: 600px; margin: 0 auto 64px; line-height: 1.6; }
+.types-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: left; }
+.type-card {
+  padding: 32px 24px; border-radius: var(--radius-lg);
+  background: var(--grey-100); border: 1px solid var(--grey-200);
   transition: all 0.3s;
 }
-.tab-btn.active {
-  background: var(--navy);
-  color: var(--white);
-  border-color: var(--navy);
-}
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  text-align: center;
-  position: relative;
-}
-.steps::before {
-  content: '';
-  position: absolute;
-  top: 36px;
-  left: 12%;
-  right: 12%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--teal), var(--lavender), var(--coral-light), var(--teal));
-  opacity: 0.2;
-}
-.step {
-  position: relative;
-  z-index: 1;
-}
-.step-num {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-.step:nth-child(1) .step-num { background: rgba(42,157,143,0.08); color: var(--teal); border: 2px solid rgba(42,157,143,0.15); }
-.step:nth-child(2) .step-num { background: rgba(184,169,201,0.1); color: var(--lavender-dark); border: 2px solid rgba(184,169,201,0.2); }
-.step:nth-child(3) .step-num { background: rgba(244,132,95,0.06); color: var(--coral); border: 2px solid rgba(244,132,95,0.12); }
-.step:nth-child(4) .step-num { background: rgba(42,157,143,0.08); color: var(--teal); border: 2px solid rgba(42,157,143,0.15); }
-.step h4 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: 8px;
-}
-.step p {
-  font-size: 0.85rem;
-  color: var(--slate);
-  line-height: 1.55;
-}
+.type-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(27,42,74,0.06); }
+.type-icon { font-size: 2rem; margin-bottom: 16px; }
+.type-card h4 { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+.type-card p { font-size: 0.85rem; color: var(--slate); line-height: 1.55; }
 
 /* ===== MARKET ===== */
-.market {
-  padding: 120px 0;
-  background: linear-gradient(160deg, var(--lavender-pale) 0%, var(--grey-100) 50%, rgba(42,157,143,0.04) 100%);
-}
+.market { padding: 120px 0; background: linear-gradient(160deg, var(--lavender-pale) 0%, var(--grey-100) 50%, rgba(42,157,143,0.04) 100%); }
 .market .container { text-align: center; }
-.market h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 64px;
-}
-.market-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-bottom: 48px;
-}
-.market-stat {
-  padding: 40px 24px;
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 4px 20px rgba(27,42,74,0.04);
-}
-.market-stat .value {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 3.5vw, 3rem);
-  font-weight: 700;
-  margin-bottom: 8px;
-}
+.market h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--navy); margin-bottom: 64px; }
+.market-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 48px; }
+.market-stat { padding: 40px 24px; background: var(--white); border-radius: var(--radius-lg); box-shadow: 0 4px 20px rgba(27,42,74,0.04); }
+.market-stat .value { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; margin-bottom: 8px; }
 .market-stat:nth-child(1) .value { color: var(--teal); }
 .market-stat:nth-child(2) .value { color: var(--lavender-dark); }
 .market-stat:nth-child(3) .value { color: var(--coral); }
 .market-stat:nth-child(4) .value { color: var(--teal); }
-.market-stat .label {
-  font-size: 0.85rem;
-  color: var(--slate);
-  line-height: 1.5;
-}
-.market-note {
-  font-size: 0.8rem;
-  color: var(--slate);
-  font-style: italic;
-}
+.market-stat .label { font-size: 0.85rem; color: var(--slate); line-height: 1.5; }
+.market-note { font-size: 0.8rem; color: var(--slate); font-style: italic; }
 
 /* ===== BUSINESS MODEL ===== */
-.business-model {
-  padding: 120px 0;
-  background: var(--white);
-}
+.business-model { padding: 120px 0; background: var(--white); }
 .business-model .container { text-align: center; }
-.business-model h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 16px;
-}
-.business-model .subtitle {
-  font-size: 1.05rem;
-  color: var(--slate);
-  max-width: 500px;
-  margin: 0 auto 64px;
-  line-height: 1.6;
-}
-.revenue-streams {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr 1fr;
-  gap: 20px;
-  align-items: stretch;
-}
-.revenue-card {
-  padding: 36px 28px;
-  border-radius: var(--radius-lg);
-  text-align: left;
-  position: relative;
-  overflow: hidden;
-}
-.revenue-card:nth-child(1) {
-  background: var(--grey-100);
-  border: 1px solid var(--grey-200);
-}
-.revenue-card:nth-child(2) {
-  background: var(--navy);
-  color: var(--white);
-  box-shadow: 0 20px 50px rgba(27,42,74,0.15);
-}
-.revenue-card:nth-child(3) {
-  background: var(--grey-100);
-  border: 1px solid var(--grey-200);
-}
-.revenue-tag {
-  display: inline-block;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 20px;
-}
+.business-model h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--navy); margin-bottom: 16px; }
+.business-model .subtitle { font-size: 1.05rem; color: var(--slate); max-width: 540px; margin: 0 auto 64px; line-height: 1.6; }
+.revenue-streams { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 20px; align-items: stretch; }
+.revenue-card { padding: 36px 28px; border-radius: var(--radius-lg); text-align: left; position: relative; overflow: hidden; }
+.revenue-card:nth-child(1) { background: var(--grey-100); border: 1px solid var(--grey-200); }
+.revenue-card:nth-child(2) { background: var(--navy); color: var(--white); box-shadow: 0 20px 50px rgba(27,42,74,0.15); }
+.revenue-card:nth-child(3) { background: var(--grey-100); border: 1px solid var(--grey-200); }
+.revenue-tag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 20px; }
 .revenue-card:nth-child(1) .revenue-tag { background: rgba(42,157,143,0.1); color: var(--teal-dark); }
 .revenue-card:nth-child(2) .revenue-tag { background: rgba(255,255,255,0.1); color: var(--teal-light); }
 .revenue-card:nth-child(3) .revenue-tag { background: rgba(184,169,201,0.15); color: var(--lavender-dark); }
-.revenue-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
+.revenue-card h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; margin-bottom: 12px; }
 .revenue-card:nth-child(2) h3 { color: var(--white); }
-.revenue-card p {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
+.revenue-card p { font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; }
 .revenue-card:nth-child(1) p, .revenue-card:nth-child(3) p { color: var(--slate); }
 .revenue-card:nth-child(2) p { color: rgba(255,255,255,0.6); }
-.revenue-price {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  font-weight: 700;
-}
+.revenue-price { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; }
 .revenue-price span { font-size: 0.85rem; font-weight: 400; }
 .revenue-card:nth-child(2) .revenue-price { color: var(--teal-light); }
-.revenue-card:nth-child(2)::after {
-  content: 'POPULAR';
-  position: absolute;
-  top: 20px;
-  right: -28px;
-  background: var(--teal);
-  color: white;
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  padding: 4px 36px;
-  transform: rotate(45deg);
-}
 
 /* ===== ROADMAP ===== */
-.roadmap {
-  padding: 120px 0;
-  background: var(--grey-100);
-}
+.roadmap { padding: 120px 0; background: var(--grey-100); }
 .roadmap .container { text-align: center; }
-.roadmap h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 64px;
-}
-.timeline {
-  display: flex;
-  gap: 0;
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 24px;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--teal), var(--lavender), var(--coral-light));
-  border-radius: 3px;
-}
-.timeline-item {
-  flex: 1;
-  position: relative;
-  padding-top: 56px;
-  text-align: center;
-}
-.timeline-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  position: absolute;
-  top: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 3px solid var(--white);
-  box-shadow: 0 0 0 3px;
-}
+.roadmap h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--navy); margin-bottom: 64px; }
+.timeline { display: flex; gap: 0; position: relative; max-width: 900px; margin: 0 auto; }
+.timeline::before { content: ''; position: absolute; top: 24px; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--teal), var(--lavender), var(--coral-light)); border-radius: 3px; }
+.timeline-item { flex: 1; position: relative; padding-top: 56px; text-align: center; }
+.timeline-dot { width: 14px; height: 14px; border-radius: 50%; position: absolute; top: 18px; left: 50%; transform: translateX(-50%); border: 3px solid var(--white); box-shadow: 0 0 0 3px; }
 .timeline-item:nth-child(1) .timeline-dot { background: var(--teal); color: var(--teal); }
 .timeline-item:nth-child(2) .timeline-dot { background: var(--lavender-dark); color: var(--lavender-dark); }
 .timeline-item:nth-child(3) .timeline-dot { background: var(--coral); color: var(--coral); }
 .timeline-item:nth-child(4) .timeline-dot { background: var(--teal); color: var(--teal); }
-.timeline-phase {
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 8px;
-}
+.timeline-phase { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
 .timeline-item:nth-child(1) .timeline-phase { color: var(--teal); }
 .timeline-item:nth-child(2) .timeline-phase { color: var(--lavender-dark); }
 .timeline-item:nth-child(3) .timeline-phase { color: var(--coral); }
 .timeline-item:nth-child(4) .timeline-phase { color: var(--teal); }
-.timeline-item h4 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: 8px;
-}
-.timeline-item p {
-  font-size: 0.8rem;
-  color: var(--slate);
-  line-height: 1.5;
-  padding: 0 12px;
-}
+.timeline-item h4 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+.timeline-item p { font-size: 0.8rem; color: var(--slate); line-height: 1.5; padding: 0 12px; }
 
 /* ===== TEAM ===== */
-.team {
-  padding: 120px 0;
-  background: var(--white);
-}
+.team { padding: 120px 0; background: var(--white); }
 .team .container { text-align: center; }
-.team h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 16px;
-}
-.team .subtitle {
-  font-size: 1.05rem;
-  color: var(--slate);
-  max-width: 480px;
-  margin: 0 auto 64px;
-  line-height: 1.6;
-}
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-.team-member {
-  text-align: center;
-}
-.team-avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin: 0 auto 20px;
-  position: relative;
-  overflow: hidden;
-}
+.team h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--navy); margin-bottom: 16px; }
+.team .subtitle { font-size: 1.05rem; color: var(--slate); max-width: 480px; margin: 0 auto 64px; line-height: 1.6; }
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 800px; margin: 0 auto; }
+.team-member { text-align: center; }
+.team-avatar { width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 20px; }
 .team-avatar-inner {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  color: white;
+  width: 100%; height: 100%; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: white;
 }
 .team-member:nth-child(1) .team-avatar-inner { background: linear-gradient(135deg, var(--teal), var(--teal-light)); }
 .team-member:nth-child(2) .team-avatar-inner { background: linear-gradient(135deg, var(--lavender-dark), var(--lavender)); }
@@ -1155,131 +478,42 @@ nav .container {
 .team-member .role { font-size: 0.85rem; color: var(--teal); font-weight: 500; margin-bottom: 8px; }
 .team-member p { font-size: 0.85rem; color: var(--slate); line-height: 1.5; }
 
-/* ===== CTA / FOOTER ===== */
+/* ===== CTA ===== */
 .cta-section {
-  padding: 120px 0;
-  background: var(--navy);
-  position: relative;
-  overflow: hidden;
-  text-align: center;
+  padding: 120px 0; background: var(--navy);
+  position: relative; overflow: hidden; text-align: center;
 }
-.cta-section::before {
-  content: '';
-  position: absolute;
-  top: -200px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(42,157,143,0.12) 0%, transparent 60%);
-}
-.cta-section::after {
-  content: '';
-  position: absolute;
-  bottom: -100px;
-  right: -100px;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(184,169,201,0.08) 0%, transparent 60%);
-}
+.cta-section::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(42,157,143,0.12) 0%, transparent 60%); }
+.cta-section::after { content: ''; position: absolute; bottom: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(184,169,201,0.08) 0%, transparent 60%); }
 .cta-section .container { position: relative; z-index: 1; }
-.cta-section h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4.5vw, 3.5rem);
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 20px;
-  line-height: 1.15;
-}
-.cta-section p {
-  font-size: 1.1rem;
-  color: rgba(255,255,255,0.55);
-  max-width: 480px;
-  margin: 0 auto 40px;
-  line-height: 1.6;
-}
-.cta-email-form {
-  display: flex;
-  gap: 12px;
-  max-width: 440px;
-  margin: 0 auto 24px;
-  justify-content: center;
-}
-.cta-email-form input {
-  flex: 1;
-  padding: 16px 24px;
-  border: 1.5px solid rgba(255,255,255,0.12);
-  border-radius: 50px;
-  background: rgba(255,255,255,0.06);
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--white);
-  outline: none;
-  transition: border-color 0.3s;
-}
+.cta-section h2 { font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 700; color: var(--white); margin-bottom: 20px; line-height: 1.15; }
+.cta-section p { font-size: 1.1rem; color: rgba(255,255,255,0.55); max-width: 500px; margin: 0 auto 40px; line-height: 1.6; }
+.cta-email-form { display: flex; gap: 12px; max-width: 440px; margin: 0 auto 24px; justify-content: center; }
+.cta-email-form input { flex: 1; padding: 16px 24px; border: 1.5px solid rgba(255,255,255,0.12); border-radius: 50px; background: rgba(255,255,255,0.06); font-family: var(--font-body); font-size: 0.95rem; color: var(--white); outline: none; transition: border-color 0.3s; }
 .cta-email-form input::placeholder { color: rgba(255,255,255,0.35); }
 .cta-email-form input:focus { border-color: var(--teal); }
-.cta-email-form button {
-  padding: 16px 32px;
-  background: var(--teal);
-  color: var(--white);
-  border: none;
-  border-radius: 50px;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  white-space: nowrap;
-}
+.cta-email-form button { padding: 16px 32px; background: var(--teal); color: var(--white); border: none; border-radius: 50px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s; white-space: nowrap; }
 .cta-email-form button:hover { background: var(--teal-light); }
-.cta-contact {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.4);
-}
-.cta-contact a {
-  color: var(--teal-light);
-  text-decoration: none;
-}
+.cta-contact { font-size: 0.85rem; color: rgba(255,255,255,0.4); }
+.cta-contact a { color: var(--teal-light); text-decoration: none; }
 
-footer {
-  padding: 32px 0;
-  background: var(--navy);
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-footer .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-footer p {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.3);
-}
-.footer-links {
-  display: flex;
-  gap: 24px;
-  list-style: none;
-}
-.footer-links a {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.3);
-  text-decoration: none;
-  transition: color 0.3s;
-}
+footer { padding: 32px 0; background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06); }
+footer .container { display: flex; justify-content: space-between; align-items: center; }
+footer p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+.footer-links { display: flex; gap: 24px; list-style: none; }
+.footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.3s; }
 .footer-links a:hover { color: var(--teal-light); }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-  .pillars { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+  .audience-split { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
   .features .container { grid-template-columns: 1fr; gap: 60px; text-align: center; }
   .features-text { order: 2; }
   .phone-mockup-wrapper { order: 1; }
   .feature-list { max-width: 400px; margin: 0 auto; text-align: left; }
   .revenue-streams { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
   .market-stats { grid-template-columns: repeat(2, 1fr); }
-  .steps { grid-template-columns: repeat(2, 1fr); }
-  .steps::before { display: none; }
+  .types-grid { grid-template-columns: repeat(2, 1fr); }
   .timeline { flex-wrap: wrap; }
   .timeline::before { display: none; }
   .timeline-item { flex: 0 0 50%; padding-top: 0; margin-bottom: 32px; }
@@ -1294,21 +528,11 @@ footer p {
   .hero h1 { font-size: 2.2rem; }
   .hero-btns { flex-direction: column; align-items: center; }
   .desktop-frame { border-radius: var(--radius-md); padding: 8px 8px 0; }
-  .desktop-screen { border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
-  .fake-dash { flex-direction: column; height: auto; }
-  .fake-sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--grey-200); padding: 16px; }
-  .fake-sidebar-logo { margin-bottom: 12px; }
-  .fake-nav-item { display: inline-flex; margin-right: 4px; margin-bottom: 0; padding: 8px 10px; font-size: 0.7rem; }
-  .fake-main { padding: 16px; }
-  .fake-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .fake-stat-card { padding: 12px; }
-  .fake-stat-value { font-size: 1.1rem; }
-  .fake-topbar { flex-direction: column; align-items: flex-start; gap: 10px; }
-  .fake-search { width: 100%; }
+  .desktop-screen { border-radius: var(--radius-sm) var(--radius-sm) 0 0; padding: 16px; }
+  .browse-grid { grid-template-columns: repeat(2, 1fr); }
+  .browse-nav { display: none; }
   .problem .container { grid-template-columns: 1fr; gap: 48px; }
   .market-stats { grid-template-columns: 1fr 1fr; }
-  .steps { grid-template-columns: 1fr 1fr; }
-  .tabs { flex-wrap: wrap; }
   .cta-email-form { flex-direction: column; }
   .cta-email-form button { width: 100%; }
   footer .container { flex-direction: column; gap: 12px; }
@@ -1318,13 +542,12 @@ footer p {
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
   .hero h1 { font-size: 1.85rem; }
-  .problem, .solution, .features, .how-it-works, .market, .business-model, .roadmap, .team, .cta-section { padding: 80px 0; }
+  .problem, .how-it-works, .features, .content-types, .market, .business-model, .roadmap, .team, .cta-section { padding: 80px 0; }
   .market-stats { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
-  .steps { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
+  .types-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+  .browse-grid { grid-template-columns: 1fr; }
   .phone-frame { width: 240px; height: 520px; border-radius: 42px; }
 }
-
-/* GSAP classes removed - JS handles initial states */
 </style>
 </head>
 <body>
@@ -1333,13 +556,13 @@ footer p {
 <nav id="mainNav">
   <div class="container">
     <a href="#" class="nav-logo">
-      <div class="logo-icon">G</div>
-      Good Health Hub
+      <div class="logo-icon">H</div>
+      Health Hub
     </a>
     <ul class="nav-links">
       <li><a href="#problem">Problem</a></li>
-      <li><a href="#solution">Solution</a></li>
-      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#features">For Practitioners</a></li>
       <li><a href="#market">Market</a></li>
       <li><a href="#model">Model</a></li>
       <li><a href="#cta" class="nav-cta">Get Early Access</a></li>
@@ -1350,89 +573,117 @@ footer p {
   </div>
 </nav>
 
+<!-- MOBILE MENU -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <ul class="mobile-menu-links">
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#features">For Practitioners</a></li>
+    <li><a href="#content">Content</a></li>
+    <li><a href="#market">Market</a></li>
+    <li><a href="#model">Business Model</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#team">Team</a></li>
+  </ul>
+  <a href="#cta" class="mobile-menu-cta">Get Early Access &rarr;</a>
+  <div class="mobile-menu-socials">
+    <a href="#" class="mobile-social-link" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="#" class="mobile-social-link" aria-label="X / Twitter">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="#" class="mobile-social-link" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+  </div>
+</div>
+
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <div class="hero-badge anim-fade">
+    <div class="hero-badge">
       <span class="dot"></span>
-      Launching Q3 2026
+      Launching 2026
     </div>
-    <h1 class="anim-fade">The future of health<br>is <span class="gradient-text">connected.</span></h1>
-    <p class="anim-fade">Good Health Hub unifies practitioner discovery, patient management, and wellness education in one seamless platform. Better outcomes start here.</p>
-    <div class="hero-btns anim-fade">
+    <h1>Health education you can <span class="gradient-text">actually trust.</span></h1>
+    <p>Health Hub is the curated marketplace connecting people with vetted, practitioner-led courses, masterclasses, and resources for every stage of their health journey.</p>
+    <div class="hero-btns">
       <a href="#cta" class="btn-primary">Join the Waitlist &rarr;</a>
-      <a href="#solution" class="btn-secondary">See How It Works</a>
+      <a href="#how" class="btn-secondary">See How It Works</a>
     </div>
 
-    <!-- Desktop Mockup -->
-    <div class="desktop-mockup anim-scale">
+    <!-- Desktop Mockup: Patient Course Browse -->
+    <div class="desktop-mockup">
       <div class="desktop-frame">
         <div class="desktop-dots"><span></span><span></span><span></span></div>
         <div class="desktop-screen">
-          <div class="fake-dash">
-            <div class="fake-sidebar">
-              <div class="fake-sidebar-logo">
-                <div class="mini-icon"></div>
-                GHH
-              </div>
-              <div class="fake-nav-item active"><div class="fake-nav-dot"></div>Dashboard</div>
-              <div class="fake-nav-item"><div class="fake-nav-dot"></div>Appointments</div>
-              <div class="fake-nav-item"><div class="fake-nav-dot"></div>Practitioners</div>
-              <div class="fake-nav-item"><div class="fake-nav-dot"></div>Courses</div>
-              <div class="fake-nav-item"><div class="fake-nav-dot"></div>My Health</div>
-              <div class="fake-nav-item"><div class="fake-nav-dot"></div>Settings</div>
+          <div class="browse-topbar">
+            <div class="browse-logo"><div class="browse-logo-mark"></div> Health Hub</div>
+            <div class="browse-nav">
+              <span class="active">Browse</span>
+              <span>My Courses</span>
+              <span>Practitioners</span>
+              <span>Membership</span>
             </div>
-            <div class="fake-main">
-              <div class="fake-topbar">
-                <div class="fake-greeting">
-                  <h3>Good morning, Sarah</h3>
-                  <p>You have 2 appointments today</p>
-                </div>
-                <div class="fake-search"></div>
+            <div class="browse-user"><div class="browse-avatar"></div></div>
+          </div>
+          <div class="browse-search">🔍 &nbsp;Search topics... "ADHD and menopause", "prenatal nausea", "gut health"</div>
+          <div class="browse-filters">
+            <span class="browse-filter active">All Formats</span>
+            <span class="browse-filter">Courses</span>
+            <span class="browse-filter">Masterclasses</span>
+            <span class="browse-filter">PDFs &amp; Guides</span>
+            <span class="browse-filter">Live Webinars</span>
+            <span class="browse-filter">Under $50</span>
+            <span class="browse-filter">Under 2 Hours</span>
+          </div>
+          <div class="browse-section-title">Trending This Week</div>
+          <div class="browse-grid">
+            <div class="course-card">
+              <div class="course-thumb" style="background: var(--teal-bg);">
+                🧬
+                <span class="course-thumb-tag" style="background: var(--teal);">Course</span>
               </div>
-              <div class="fake-stats">
-                <div class="fake-stat-card">
-                  <div class="fake-stat-label">Upcoming</div>
-                  <div class="fake-stat-value">3</div>
-                  <div class="fake-stat-change">Next: Tomorrow, 10am</div>
+              <div class="course-card-body">
+                <div class="course-card-title">ADHD in Women: What Your Doctor Didn't Tell You</div>
+                <div class="course-card-author">Dr. Heather Robinson, ND</div>
+                <div class="course-card-meta">
+                  <span class="course-card-price">$79</span>
+                  <span class="course-card-info">6 modules &middot; 4.5 hrs</span>
                 </div>
-                <div class="fake-stat-card">
-                  <div class="fake-stat-label">Courses Active</div>
-                  <div class="fake-stat-value">2</div>
-                  <div class="fake-stat-change">78% complete</div>
-                </div>
-                <div class="fake-stat-card">
-                  <div class="fake-stat-label">Practitioners</div>
-                  <div class="fake-stat-value">5</div>
-                  <div class="fake-stat-change">+1 new recommendation</div>
-                </div>
+                <div class="course-card-rating">★★★★★ 4.9 (342)</div>
               </div>
-              <div class="fake-appointments">
-                <h4>Today's Appointments</h4>
-                <div class="fake-appt-row">
-                  <div class="fake-appt-avatar" style="background: linear-gradient(135deg, var(--teal), var(--teal-light));"></div>
-                  <div class="fake-appt-info">
-                    <div class="name">Dr. Emily Tran</div>
-                    <div class="type">Naturopathic Consultation</div>
-                  </div>
-                  <div class="fake-appt-time">10:30 AM</div>
+            </div>
+            <div class="course-card">
+              <div class="course-thumb" style="background: var(--lavender-bg);">
+                🤰
+                <span class="course-thumb-tag" style="background: var(--lavender-dark);">Masterclass</span>
+              </div>
+              <div class="course-card-body">
+                <div class="course-card-title">Reducing Prenatal Nausea Naturally</div>
+                <div class="course-card-author">Dr. Aisha Patel, PhD Nutrition</div>
+                <div class="course-card-meta">
+                  <span class="course-card-price">$35</span>
+                  <span class="course-card-info">Live &middot; 90 min</span>
                 </div>
-                <div class="fake-appt-row">
-                  <div class="fake-appt-avatar" style="background: linear-gradient(135deg, var(--lavender-dark), var(--lavender));"></div>
-                  <div class="fake-appt-info">
-                    <div class="name">Mark Sullivan, RMT</div>
-                    <div class="type">Deep Tissue Massage</div>
-                  </div>
-                  <div class="fake-appt-time">2:00 PM</div>
+                <div class="course-card-rating">★★★★★ 4.8 (128)</div>
+              </div>
+            </div>
+            <div class="course-card">
+              <div class="course-thumb" style="background: var(--coral-bg);">
+                🧘
+                <span class="course-thumb-tag" style="background: var(--coral);">Guide</span>
+              </div>
+              <div class="course-card-body">
+                <div class="course-card-title">The Gut-Brain Protocol: A 30-Day Reset</div>
+                <div class="course-card-author">Dr. Emily Tran, ND</div>
+                <div class="course-card-meta">
+                  <span class="course-card-price">$24</span>
+                  <span class="course-card-info">PDF &middot; 48 pages</span>
                 </div>
-                <div class="fake-appt-row" style="border: none;">
-                  <div class="fake-appt-avatar" style="background: linear-gradient(135deg, var(--coral), var(--coral-light));"></div>
-                  <div class="fake-appt-info">
-                    <div class="name">Dr. Aisha Patel</div>
-                    <div class="type">Nutritional Assessment</div>
-                  </div>
-                  <div class="fake-appt-time">4:15 PM</div>
-                </div>
+                <div class="course-card-rating">★★★★☆ 4.7 (89)</div>
               </div>
             </div>
           </div>
@@ -1446,103 +697,112 @@ footer p {
 <section class="problem" id="problem">
   <div class="container">
     <div class="problem-text">
-      <div class="section-label anim-fade-left">The Problem</div>
-      <h2 class="anim-fade-left">Health & wellness is broken into a hundred disconnected pieces.</h2>
-      <p class="anim-fade-left">Patients juggle multiple portals, scattered records, and endless phone calls to manage their health. Practitioners lose clients between visits and have no scalable way to share their expertise. The system fails both sides.</p>
+      <div class="section-label">The Problem</div>
+      <h2>Health information online is a minefield.</h2>
+      <p>People want to take control of their health, but the internet is flooded with unvetted advice, conflicting information, and wellness influencers with no clinical credentials. Meanwhile, the practitioners who actually know their stuff have no scalable way to reach the people who need them.</p>
     </div>
     <div class="problem-visual">
-      <div class="pain-card anim-fade-right">
+      <div class="pain-card">
+        <div class="pain-icon">🚩</div>
+        <div>
+          <h4>Trust is Broken</h4>
+          <p>Patients can't tell the difference between evidence-based guidance and influencer pseudoscience. There's no quality filter between a naturopath with 15 years of clinical experience and a wellness blogger with a ring light.</p>
+        </div>
+      </div>
+      <div class="pain-card">
         <div class="pain-icon">🔍</div>
         <div>
-          <h4>Discovery is Fragmented</h4>
-          <p>Finding the right practitioner means sifting through outdated directories, unreliable reviews, and endless Google searches with no way to filter by what actually matters.</p>
+          <h4>Discovery is Overwhelming</h4>
+          <p>Finding the right course, guide, or resource for a specific health question means sifting through dozens of platforms with no way to filter by format, time commitment, budget, or credential level.</p>
         </div>
       </div>
-      <div class="pain-card anim-fade-right">
-        <div class="pain-icon">📋</div>
-        <div>
-          <h4>Records Live Everywhere</h4>
-          <p>Every practitioner has their own portal, their own login, their own system. Patients become the middleman between their own care providers, repeating information at every visit.</p>
-        </div>
-      </div>
-      <div class="pain-card anim-fade-right">
-        <div class="pain-icon">💰</div>
+      <div class="pain-card">
+        <div class="pain-icon">📉</div>
         <div>
           <h4>Practitioners Hit a Ceiling</h4>
-          <p>Income is capped at the number of hours in a day. There's no scalable infrastructure for practitioners to monetize their expertise through courses, content, or digital products.</p>
+          <p>Talented practitioners create incredible educational content but have no distribution. They're stuck marketing on Instagram and building Kajabi funnels instead of doing what they're best at: teaching and treating.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SOLUTION -->
-<section class="solution" id="solution">
+<!-- HOW IT WORKS (Two Audiences) -->
+<section class="how-it-works" id="how">
   <div class="container">
-    <div class="section-label anim-fade">The Solution</div>
-    <h2 class="anim-fade">One platform. Three powerful pillars.</h2>
-    <p class="subtitle anim-fade">Good Health Hub connects every piece of the wellness journey into a single, elegant experience for patients and practitioners alike.</p>
-    <div class="pillars">
-      <div class="pillar anim-stagger">
-        <div class="pillar-number">01</div>
-        <h3>Discover & Book</h3>
-        <p>A curated, searchable directory of vetted wellness practitioners. Filter by specialty, location, availability, insurance, and treatment philosophy. Book directly with zero friction.</p>
+    <div class="section-label">How It Works</div>
+    <h2>One platform. Two powerful experiences.</h2>
+    <p class="subtitle">Health Hub serves both sides of the equation, creating a marketplace where great content finds the right people.</p>
+    <div class="audience-split">
+      <div class="audience-card">
+        <div class="audience-emoji">🧑‍💻</div>
+        <h3>For Patients &amp; Learners</h3>
+        <p>Search by topic, filter by what matters to you, and access trustworthy health education from vetted practitioners worldwide.</p>
+        <ul class="audience-features">
+          <li>Search by health topic, symptom, or condition</li>
+          <li>Filter by format, duration, price, and credential level</li>
+          <li>Browse vetted practitioner profiles and reviews</li>
+          <li>Track your learning journey across courses</li>
+          <li>Unlock member perks at health-focused retailers</li>
+        </ul>
       </div>
-      <div class="pillar anim-stagger">
-        <div class="pillar-number">02</div>
-        <h3>Your Health Home</h3>
-        <p>A persistent patient dashboard that centralizes appointment history, practitioner notes, saved providers, and recommended resources. Your health story, all in one place.</p>
-      </div>
-      <div class="pillar anim-stagger">
-        <div class="pillar-number">03</div>
-        <h3>Learn & Grow</h3>
-        <p>A knowledge marketplace where practitioners sell courses, host live webinars, and publish premium content. Patients get expert-led education; practitioners unlock scalable revenue.</p>
+      <div class="audience-card">
+        <div class="audience-emoji">🩺</div>
+        <h3>For Practitioners</h3>
+        <p>Upload your courses and content, let Health Hub handle discovery and distribution, and reach the right audience without building your own marketing machine.</p>
+        <ul class="audience-features">
+          <li>List courses, masterclasses, PDFs, and webinars</li>
+          <li>Build your practitioner profile and credibility</li>
+          <li>Reach a global audience of health-motivated learners</li>
+          <li>Track sales, engagement, and revenue in one dashboard</li>
+          <li>Focus on content creation, not funnel building</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES + PHONE -->
+<!-- FEATURES + PHONE (Practitioner Dashboard) -->
 <section class="features" id="features">
   <div class="container">
     <div class="features-text">
-      <div class="section-label anim-fade-left">Platform Features</div>
-      <h2 class="anim-fade-left">Built for how people actually manage their health.</h2>
-      <p class="anim-fade-left">We designed every feature around real patient and practitioner pain points, not industry conventions.</p>
+      <div class="section-label">Practitioner Platform</div>
+      <h2>Your expertise deserves a bigger stage.</h2>
+      <p>We built the practitioner side of Health Hub to eliminate the busywork between creating great content and earning revenue from it.</p>
       <div class="feature-list">
-        <div class="feature-item anim-fade-left">
-          <div class="feature-icon">⚡</div>
+        <div class="feature-item">
+          <div class="feature-icon">📤</div>
           <div>
-            <h4>Instant Smart Matching</h4>
-            <p>AI-powered recommendations based on symptoms, preferences, location, and past care history.</p>
+            <h4>Simple Course Upload</h4>
+            <p>Upload videos, PDFs, and live webinar links. We handle formatting, previews, and discoverability.</p>
           </div>
         </div>
-        <div class="feature-item anim-fade-left">
-          <div class="feature-icon">🔒</div>
+        <div class="feature-item">
+          <div class="feature-icon">🎯</div>
           <div>
-            <h4>Privacy-First Records</h4>
-            <p>PHIPA-compliant health records shared only with explicit patient consent per practitioner.</p>
+            <h4>Smart Matching</h4>
+            <p>Our algorithm connects your content with the patients searching for exactly what you teach.</p>
           </div>
         </div>
-        <div class="feature-item anim-fade-left">
-          <div class="feature-icon">📹</div>
+        <div class="feature-item">
+          <div class="feature-icon">📊</div>
           <div>
-            <h4>Integrated Telehealth</h4>
-            <p>Built-in video consultations so practitioners and patients can connect from anywhere.</p>
+            <h4>Revenue Dashboard</h4>
+            <p>Track earnings, enrolments, reviews, and engagement in real time from any device.</p>
           </div>
         </div>
-        <div class="feature-item anim-fade-left">
-          <div class="feature-icon">📚</div>
+        <div class="feature-item">
+          <div class="feature-icon">🌍</div>
           <div>
-            <h4>Course Builder</h4>
-            <p>Drag-and-drop tools for practitioners to create and sell courses, modules, and certification programs.</p>
+            <h4>Global Reach</h4>
+            <p>Your courses are accessible to learners worldwide. No ad spend, no funnels, no algorithm games.</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Phone Mockup -->
-    <div class="phone-mockup-wrapper anim-fade-right">
+    <!-- Phone Mockup: Practitioner Dashboard -->
+    <div class="phone-mockup-wrapper">
       <div class="phone-frame">
         <div class="phone-notch"></div>
         <div class="phone-screen">
@@ -1551,62 +811,49 @@ footer p {
             <span>●●●● 5G</span>
           </div>
           <div class="phone-content">
-            <div class="phone-header">
-              <h4>Find a Practitioner</h4>
-              <p>Toronto, ON</p>
+            <div class="prac-header">
+              <h4>Welcome back, Dr. Robinson</h4>
+              <p>Your courses are performing well this week</p>
             </div>
-            <div class="phone-search-bar">🔍 &nbsp;Search by name or specialty...</div>
-            <div class="phone-categories">
-              <div class="phone-cat active">All</div>
-              <div class="phone-cat">Naturopath</div>
-              <div class="phone-cat">RMT</div>
-              <div class="phone-cat">Chiro</div>
-              <div class="phone-cat">Nutrition</div>
+            <div class="prac-earnings">
+              <div class="amount">$4,280</div>
+              <div class="lbl">Revenue this month</div>
             </div>
-            <div class="phone-practitioner-card">
-              <div class="phone-prac-avatar" style="background: linear-gradient(135deg, var(--teal), var(--teal-light));"></div>
-              <div class="phone-prac-info">
-                <div class="name">Dr. Emily Tran, ND</div>
-                <div class="spec">Naturopathic Medicine</div>
-                <div class="rating">★★★★★ 4.9 (127)</div>
-              </div>
-              <div class="phone-book-btn">Book</div>
+            <div class="prac-stat-row">
+              <div class="prac-stat"><div class="val">847</div><div class="lbl">Enrolments</div></div>
+              <div class="prac-stat"><div class="val">4.9</div><div class="lbl">Avg Rating</div></div>
+              <div class="prac-stat"><div class="val">12</div><div class="lbl">Courses</div></div>
             </div>
-            <div class="phone-practitioner-card">
-              <div class="phone-prac-avatar" style="background: linear-gradient(135deg, var(--lavender-dark), var(--lavender));"></div>
-              <div class="phone-prac-info">
-                <div class="name">Mark Sullivan, RMT</div>
-                <div class="spec">Registered Massage Therapy</div>
-                <div class="rating">★★★★★ 4.8 (89)</div>
+            <div class="prac-section-label">Top Performing</div>
+            <div class="prac-course-item">
+              <div class="prac-course-thumb" style="background: var(--teal-bg);">🧬</div>
+              <div class="prac-course-info">
+                <div class="title">ADHD in Women</div>
+                <div class="meta">342 enrolled &middot; ★ 4.9</div>
               </div>
-              <div class="phone-book-btn">Book</div>
+              <div class="prac-course-revenue">$1,840</div>
             </div>
-            <div class="phone-practitioner-card">
-              <div class="phone-prac-avatar" style="background: linear-gradient(135deg, var(--coral), var(--coral-light));"></div>
-              <div class="phone-prac-info">
-                <div class="name">Dr. Aisha Patel, PhD</div>
-                <div class="spec">Clinical Nutrition</div>
-                <div class="rating">★★★★☆ 4.7 (64)</div>
+            <div class="prac-course-item">
+              <div class="prac-course-thumb" style="background: var(--lavender-bg);">🌿</div>
+              <div class="prac-course-info">
+                <div class="title">Hormonal Balance Protocol</div>
+                <div class="meta">218 enrolled &middot; ★ 4.8</div>
               </div>
-              <div class="phone-book-btn">Book</div>
+              <div class="prac-course-revenue">$1,120</div>
             </div>
-            <div class="phone-bottom-nav">
-              <div class="phone-nav-item active">
-                <div class="phone-nav-icon"></div>
-                Home
+            <div class="prac-course-item">
+              <div class="prac-course-thumb" style="background: var(--coral-bg);">💊</div>
+              <div class="prac-course-info">
+                <div class="title">Supplement Masterclass</div>
+                <div class="meta">156 enrolled &middot; ★ 4.7</div>
               </div>
-              <div class="phone-nav-item">
-                <div class="phone-nav-icon"></div>
-                Search
-              </div>
-              <div class="phone-nav-item">
-                <div class="phone-nav-icon"></div>
-                Health
-              </div>
-              <div class="phone-nav-item">
-                <div class="phone-nav-icon"></div>
-                Profile
-              </div>
+              <div class="prac-course-revenue">$780</div>
+            </div>
+            <div class="prac-bottom-nav">
+              <div class="prac-bnav active"><span class="prac-bnav-icon">📊</span>Dashboard</div>
+              <div class="prac-bnav"><span class="prac-bnav-icon">📚</span>Courses</div>
+              <div class="prac-bnav"><span class="prac-bnav-icon">👤</span>Profile</div>
+              <div class="prac-bnav"><span class="prac-bnav-icon">⚙️</span>Settings</div>
             </div>
             <div class="phone-home-indicator"></div>
           </div>
@@ -1615,35 +862,33 @@ footer p {
     </div>
   </div>
 </section>
-<section class="how-it-works" id="how">
+
+<!-- CONTENT TYPES -->
+<section class="content-types" id="content">
   <div class="container">
-    <div class="section-label anim-fade">How It Works</div>
-    <h2 class="anim-fade">Simple for patients. Powerful for practitioners.</h2>
-    <p class="subtitle anim-fade">Getting started takes less than two minutes on either side of the platform.</p>
-    <div class="tabs anim-fade">
-      <button class="tab-btn active">For Patients</button>
-      <button class="tab-btn">For Practitioners</button>
-    </div>
-    <div class="steps">
-      <div class="step anim-stagger">
-        <div class="step-num">1</div>
-        <h4>Create Your Profile</h4>
-        <p>Sign up and tell us about your health goals, preferences, and any existing conditions.</p>
+    <div class="section-label">What You'll Find</div>
+    <h2>Education for every stage of your journey.</h2>
+    <p class="subtitle">Whether you have 20 minutes or 20 hours, $0 or $200, Health Hub has the right format for where you are right now.</p>
+    <div class="types-grid">
+      <div class="type-card">
+        <div class="type-icon">🎓</div>
+        <h4>Full Courses</h4>
+        <p>Multi-module deep dives into specific health topics. Self-paced, with video, worksheets, and practitioner support.</p>
       </div>
-      <div class="step anim-stagger">
-        <div class="step-num">2</div>
-        <h4>Get Matched</h4>
-        <p>Our smart matching engine recommends practitioners tailored to your unique needs.</p>
+      <div class="type-card">
+        <div class="type-icon">🎤</div>
+        <h4>Live Masterclasses</h4>
+        <p>Interactive sessions with Q&amp;A. Learn directly from practitioners and get your specific questions answered in real time.</p>
       </div>
-      <div class="step anim-stagger">
-        <div class="step-num">3</div>
-        <h4>Book & Connect</h4>
-        <p>Schedule appointments instantly, meet in person or via telehealth, and track everything in your dashboard.</p>
+      <div class="type-card">
+        <div class="type-icon">📄</div>
+        <h4>Guides &amp; PDFs</h4>
+        <p>Protocols, meal plans, supplement guides, and reference materials you can download and use immediately.</p>
       </div>
-      <div class="step anim-stagger">
-        <div class="step-num">4</div>
-        <h4>Learn & Thrive</h4>
-        <p>Access courses, webinars, and resources from your practitioners to continue your wellness journey between visits.</p>
+      <div class="type-card">
+        <div class="type-icon">📹</div>
+        <h4>Webinar Replays</h4>
+        <p>Missed a live session? Access the full recording library, searchable by topic, practitioner, and condition.</p>
       </div>
     </div>
   </div>
@@ -1652,54 +897,54 @@ footer p {
 <!-- MARKET -->
 <section class="market" id="market">
   <div class="container">
-    <div class="section-label anim-fade">Market Opportunity</div>
-    <h2 class="anim-fade">A massive, underserved market.</h2>
+    <div class="section-label">Market Opportunity</div>
+    <h2>A massive, underserved market.</h2>
     <div class="market-stats">
-      <div class="market-stat anim-stagger">
+      <div class="market-stat">
         <div class="value">$7.5T</div>
         <div class="label">Global wellness economy by 2028</div>
       </div>
-      <div class="market-stat anim-stagger">
-        <div class="value">42%</div>
-        <div class="label">Canadians using complementary health services</div>
+      <div class="market-stat">
+        <div class="value">$410B</div>
+        <div class="label">Online education market by 2027</div>
       </div>
-      <div class="market-stat anim-stagger">
-        <div class="value">3.2x</div>
-        <div class="label">Growth in online health education since 2020</div>
+      <div class="market-stat">
+        <div class="value">73%</div>
+        <div class="label">Of adults research health topics online before seeking care</div>
       </div>
-      <div class="market-stat anim-stagger">
+      <div class="market-stat">
         <div class="value">82%</div>
-        <div class="label">Patients who want a centralized health platform</div>
+        <div class="label">Say they'd pay for content from a trusted health professional</div>
       </div>
     </div>
-    <p class="market-note anim-fade">Sources: Global Wellness Institute, Statistics Canada, McKinsey Digital Health Report</p>
+    <p class="market-note">Sources: Global Wellness Institute, Statista, McKinsey Digital Health Report</p>
   </div>
 </section>
 
 <!-- BUSINESS MODEL -->
 <section class="business-model" id="model">
   <div class="container">
-    <div class="section-label anim-fade">Business Model</div>
-    <h2 class="anim-fade">Three revenue streams. One flywheel.</h2>
-    <p class="subtitle anim-fade">Every side of the platform reinforces the other, creating compounding network effects.</p>
+    <div class="section-label">Business Model</div>
+    <h2>Multiple revenue streams. One flywheel.</h2>
+    <p class="subtitle">Every learner on the platform drives value for practitioners. Every new course drives organic discovery for learners.</p>
     <div class="revenue-streams">
-      <div class="revenue-card anim-stagger">
-        <div class="revenue-tag">Patients</div>
-        <h3>Freemium Access</h3>
-        <p>Free for patients to search, book, and manage appointments. Premium tier unlocks advanced health tracking, priority booking, and exclusive content.</p>
-        <div class="revenue-price">Free <span>/ $9.99 premium</span></div>
+      <div class="revenue-card">
+        <div class="revenue-tag">Learners</div>
+        <h3>Free &amp; Premium</h3>
+        <p>Free browsing and access to select content. Premium members get unlimited access, exclusive courses, and partner discounts at retailers like Whole Foods and Healthy Planet.</p>
+        <div class="revenue-price">Free <span>/ $14.99 premium</span></div>
       </div>
-      <div class="revenue-card anim-stagger">
+      <div class="revenue-card">
         <div class="revenue-tag">Practitioners</div>
-        <h3>Pro Subscriptions</h3>
-        <p>Monthly subscription for practitioners to list their practice, manage bookings, access analytics, run telehealth sessions, and publish courses on the marketplace.</p>
-        <div class="revenue-price">$79 <span>/ month</span></div>
-      </div>
-      <div class="revenue-card anim-stagger">
-        <div class="revenue-tag">Marketplace</div>
-        <h3>Course Commission</h3>
-        <p>Good Health Hub takes a percentage on every course, webinar, and digital product sold through the knowledge marketplace. Practitioners keep the majority.</p>
+        <h3>Listing &amp; Commission</h3>
+        <p>Practitioners list their profile and courses on the marketplace. Health Hub takes a commission on each sale, handling payments, discovery, and distribution.</p>
         <div class="revenue-price">15% <span>/ transaction</span></div>
+      </div>
+      <div class="revenue-card">
+        <div class="revenue-tag">Partners</div>
+        <h3>Retail Partnerships</h3>
+        <p>Health-focused brands and retailers partner with Health Hub to offer exclusive discounts to premium members, driving foot traffic and brand loyalty.</p>
+        <div class="revenue-price">Rev Share <span>/ per partner</span></div>
       </div>
     </div>
   </div>
@@ -1708,32 +953,32 @@ footer p {
 <!-- ROADMAP -->
 <section class="roadmap" id="roadmap">
   <div class="container">
-    <div class="section-label anim-fade">Roadmap</div>
-    <h2 class="anim-fade">From concept to scale.</h2>
+    <div class="section-label">Roadmap</div>
+    <h2>From concept to scale.</h2>
     <div class="timeline">
-      <div class="timeline-item anim-stagger">
+      <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-phase">Q3 2026</div>
         <h4>Beta Launch</h4>
-        <p>Core directory, booking engine, and patient dashboard live in Toronto.</p>
+        <p>Core marketplace live with curated practitioner content. Search, filters, and learner profiles.</p>
       </div>
-      <div class="timeline-item anim-stagger">
+      <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-phase">Q1 2027</div>
-        <h4>Marketplace Live</h4>
-        <p>Course builder and knowledge marketplace open to all practitioners on the platform.</p>
+        <h4>Premium &amp; Perks</h4>
+        <p>Premium membership tier with retail partnerships, exclusive content, and community features.</p>
       </div>
-      <div class="timeline-item anim-stagger">
+      <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-phase">Q3 2027</div>
-        <h4>National Expansion</h4>
-        <p>Expand to Vancouver, Calgary, and Montreal. Launch integrated telehealth.</p>
+        <h4>Live Platform</h4>
+        <p>Integrated live webinar hosting, real-time Q&amp;A, and scheduled masterclass events.</p>
       </div>
-      <div class="timeline-item anim-stagger">
+      <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-phase">2028</div>
-        <h4>Cross-Border</h4>
-        <p>Enter US market. Enterprise tier for clinics and multi-location practices.</p>
+        <h4>Global Expansion</h4>
+        <p>Multi-language support, international practitioner onboarding, and cross-border retail partnerships.</p>
       </div>
     </div>
   </div>
@@ -1742,23 +987,23 @@ footer p {
 <!-- TEAM -->
 <section class="team" id="team">
   <div class="container">
-    <div class="section-label anim-fade">The Team</div>
-    <h2 class="anim-fade">Built by people who care.</h2>
-    <p class="subtitle anim-fade">Our founding team brings together deep expertise in health, technology, and building products people love.</p>
+    <div class="section-label">The Team</div>
+    <h2>Built by people who care.</h2>
+    <p class="subtitle">Our founding team brings together deep expertise in health, technology, and building products people love.</p>
     <div class="team-grid">
-      <div class="team-member anim-stagger">
+      <div class="team-member">
         <div class="team-avatar"><div class="team-avatar-inner">HR</div></div>
         <h4>Dr. Heather Robinson, ND</h4>
-        <div class="role">CEO & Founder</div>
-        <p>Practising naturopathic doctor with 15+ years clinical experience. Founded GHH to solve the fragmentation she witnessed firsthand.</p>
+        <div class="role">CEO &amp; Founder</div>
+        <p>Practising naturopathic doctor with 15+ years clinical experience. Founded Health Hub to solve the trust and access gap she witnessed firsthand.</p>
       </div>
-      <div class="team-member anim-stagger">
+      <div class="team-member">
         <div class="team-avatar"><div class="team-avatar-inner">SK</div></div>
         <h4>Samira Khan</h4>
-        <div class="role">CTO & Co-Founder</div>
+        <div class="role">CTO &amp; Co-Founder</div>
         <p>Ex-Shopify staff engineer. Built marketplace infrastructure serving millions of users.</p>
       </div>
-      <div class="team-member anim-stagger">
+      <div class="team-member">
         <div class="team-avatar"><div class="team-avatar-inner">ML</div></div>
         <h4>Dr. Michael Leung</h4>
         <div class="role">Chief Product Officer</div>
@@ -1771,19 +1016,19 @@ footer p {
 <!-- CTA -->
 <section class="cta-section" id="cta">
   <div class="container">
-    <h2 class="anim-fade">Ready to rethink<br>health & wellness?</h2>
-    <p class="anim-fade">Join the waitlist for early access. Be among the first practitioners and patients on the platform.</p>
-    <div class="cta-email-form anim-fade">
+    <h2>Ready to rethink<br>health education?</h2>
+    <p>Join the waitlist for early access. Whether you're a learner looking for trustworthy content or a practitioner ready to reach a wider audience.</p>
+    <div class="cta-email-form">
       <input type="email" placeholder="Enter your email">
       <button>Join Waitlist</button>
     </div>
-    <p class="cta-contact anim-fade">Investor inquiries: <a href="mailto:invest@goodhealthhub.ca">invest@goodhealthhub.ca</a></p>
+    <p class="cta-contact">Investor inquiries: <a href="mailto:invest@healthhub.ca">invest@healthhub.ca</a></p>
   </div>
 </section>
 
 <footer>
   <div class="container">
-    <p>&copy; 2026 Good Health Hub Inc. All rights reserved.</p>
+    <p>&copy; 2026 Health Hub Inc. All rights reserved.</p>
     <ul class="footer-links">
       <li><a href="#">Privacy</a></li>
       <li><a href="#">Terms</a></li>
@@ -1793,30 +1038,14 @@ footer p {
 </footer>
 
 <script>
-// Register GSAP
 gsap.registerPlugin(ScrollTrigger);
 
-// Nav scroll effect
+// Nav scroll
 window.addEventListener('scroll', () => {
   document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Helper: safely animate with fromTo so elements always end visible
-function animateIn(targets, fromVars, toVars, scrollOpts) {
-  const defaults = { duration: 0.8, ease: 'power2.out' };
-  gsap.fromTo(targets,
-    { opacity: 0, ...fromVars },
-    {
-      opacity: 1,
-      x: 0, y: 0, scale: 1, rotation: 0,
-      ...defaults,
-      ...toVars,
-      scrollTrigger: { trigger: targets, start: 'top 88%', ...scrollOpts }
-    }
-  );
-}
-
-// Hero staggered entrance
+// Hero
 const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 heroTl
   .fromTo('.hero .hero-badge', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.2 })
@@ -1825,111 +1054,53 @@ heroTl
   .fromTo('.hero-btns', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8 }, '-=0.4')
   .fromTo('.desktop-mockup', { opacity: 0, y: 60, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: 'power2.out' }, '-=0.4');
 
-// Floating desktop mockup
 gsap.to('.desktop-mockup', { y: -10, duration: 3, ease: 'sine.inOut', yoyo: true, repeat: -1 });
 
-// Problem section
+// Problem
 gsap.utils.toArray('.problem-text > *').forEach((el, i) => {
-  gsap.fromTo(el,
-    { opacity: 0, x: -40 },
-    { opacity: 1, x: 0, duration: 0.8, delay: i * 0.12, ease: 'power2.out',
-      scrollTrigger: { trigger: el, start: 'top 88%' }
-    }
-  );
+  gsap.fromTo(el, { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.8, delay: i * 0.12, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 88%' } });
 });
-
 gsap.utils.toArray('.pain-card').forEach((card, i) => {
-  gsap.fromTo(card,
-    { opacity: 0, x: 40 },
-    { opacity: 1, x: 0, duration: 0.8, delay: i * 0.18, ease: 'power2.out',
-      scrollTrigger: { trigger: card, start: 'top 88%' }
-    }
-  );
+  gsap.fromTo(card, { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.8, delay: i * 0.18, ease: 'power2.out', scrollTrigger: { trigger: card, start: 'top 88%' } });
 });
-
-// Solution section
-gsap.fromTo('.solution h2', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, scrollTrigger: { trigger: '.solution h2', start: 'top 88%' } });
-gsap.fromTo('.solution .subtitle', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.1, scrollTrigger: { trigger: '.solution .subtitle', start: 'top 88%' } });
-
-gsap.utils.toArray('.pillar').forEach((pillar, i) => {
-  gsap.fromTo(pillar,
-    { opacity: 0, y: 50 },
-    { opacity: 1, y: 0, duration: 0.8, delay: i * 0.15, ease: 'power2.out',
-      scrollTrigger: { trigger: pillar, start: 'top 88%' }
-    }
-  );
-});
-
-// Features section
-gsap.utils.toArray('.features-text > *').forEach((el, i) => {
-  gsap.fromTo(el,
-    { opacity: 0, x: -40 },
-    { opacity: 1, x: 0, duration: 0.8, delay: i * 0.1, ease: 'power2.out',
-      scrollTrigger: { trigger: '.features', start: 'top 65%' }
-    }
-  );
-});
-
-gsap.fromTo('.phone-frame',
-  { opacity: 0, x: 60, rotation: 5 },
-  { opacity: 1, x: 0, rotation: 0, duration: 1, delay: 0.3, ease: 'power2.out',
-    scrollTrigger: { trigger: '.features', start: 'top 65%' }
-  }
-);
-
-// Floating phone
-gsap.to('.phone-frame', { y: -8, rotation: -1, duration: 4, ease: 'sine.inOut', yoyo: true, repeat: -1 });
 
 // How it works
-gsap.fromTo('.how-it-works h2', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, scrollTrigger: { trigger: '.how-it-works', start: 'top 78%' } });
-
-gsap.utils.toArray('.step').forEach((step, i) => {
-  gsap.fromTo(step,
-    { opacity: 0, y: 40 },
-    { opacity: 1, y: 0, duration: 0.7, delay: i * 0.15, ease: 'power2.out',
-      scrollTrigger: { trigger: step, start: 'top 88%' }
-    }
-  );
+gsap.fromTo('.how-it-works h2', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, scrollTrigger: { trigger: '.how-it-works h2', start: 'top 88%' } });
+gsap.fromTo('.how-it-works .subtitle', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.1, scrollTrigger: { trigger: '.how-it-works .subtitle', start: 'top 88%' } });
+gsap.utils.toArray('.audience-card').forEach((card, i) => {
+  gsap.fromTo(card, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.8, delay: i * 0.2, ease: 'power2.out', scrollTrigger: { trigger: card, start: 'top 88%' } });
 });
 
-// Market stats
+// Features
+gsap.utils.toArray('.features-text > *').forEach((el, i) => {
+  gsap.fromTo(el, { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.8, delay: i * 0.1, ease: 'power2.out', scrollTrigger: { trigger: '.features', start: 'top 65%' } });
+});
+gsap.fromTo('.phone-frame', { opacity: 0, x: 60, rotation: 5 }, { opacity: 1, x: 0, rotation: 0, duration: 1, delay: 0.3, ease: 'power2.out', scrollTrigger: { trigger: '.features', start: 'top 65%' } });
+gsap.to('.phone-frame', { y: -8, rotation: -1, duration: 4, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+
+// Content types
+gsap.utils.toArray('.type-card').forEach((card, i) => {
+  gsap.fromTo(card, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, delay: i * 0.12, ease: 'power2.out', scrollTrigger: { trigger: card, start: 'top 88%' } });
+});
+
+// Market
 gsap.utils.toArray('.market-stat').forEach((stat, i) => {
-  gsap.fromTo(stat,
-    { opacity: 0, y: 40, scale: 0.95 },
-    { opacity: 1, y: 0, scale: 1, duration: 0.7, delay: i * 0.12, ease: 'back.out(1.5)',
-      scrollTrigger: { trigger: stat, start: 'top 88%' }
-    }
-  );
+  gsap.fromTo(stat, { opacity: 0, y: 40, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, delay: i * 0.12, ease: 'back.out(1.5)', scrollTrigger: { trigger: stat, start: 'top 88%' } });
 });
 
-// Revenue cards
+// Revenue
 gsap.utils.toArray('.revenue-card').forEach((card, i) => {
-  gsap.fromTo(card,
-    { opacity: 0, y: 50 },
-    { opacity: 1, y: 0, duration: 0.8, delay: i * 0.15, ease: 'power2.out',
-      scrollTrigger: { trigger: card, start: 'top 88%' }
-    }
-  );
+  gsap.fromTo(card, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.8, delay: i * 0.15, ease: 'power2.out', scrollTrigger: { trigger: card, start: 'top 88%' } });
 });
 
 // Timeline
 gsap.utils.toArray('.timeline-item').forEach((item, i) => {
-  gsap.fromTo(item,
-    { opacity: 0, y: 30 },
-    { opacity: 1, y: 0, duration: 0.7, delay: i * 0.15, ease: 'power2.out',
-      scrollTrigger: { trigger: item, start: 'top 88%' }
-    }
-  );
+  gsap.fromTo(item, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, delay: i * 0.15, ease: 'power2.out', scrollTrigger: { trigger: item, start: 'top 88%' } });
 });
 
 // Team
 gsap.utils.toArray('.team-member').forEach((member, i) => {
-  gsap.fromTo(member,
-    { opacity: 0, y: 40, scale: 0.95 },
-    { opacity: 1, y: 0, scale: 1, duration: 0.7, delay: i * 0.15, ease: 'back.out(1.5)',
-      scrollTrigger: { trigger: member, start: 'top 88%' }
-    }
-  );
+  gsap.fromTo(member, { opacity: 0, y: 40, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, delay: i * 0.15, ease: 'back.out(1.5)', scrollTrigger: { trigger: member, start: 'top 88%' } });
 });
 
 // CTA
@@ -1938,13 +1109,30 @@ gsap.fromTo('.cta-section > .container > p', { opacity: 0, y: 30 }, { opacity: 1
 gsap.fromTo('.cta-email-form', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.3, scrollTrigger: { trigger: '.cta-section', start: 'top 75%' } });
 gsap.fromTo('.cta-contact', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, delay: 0.45, scrollTrigger: { trigger: '.cta-section', start: 'top 75%' } });
 
-// Tab switching (visual only)
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  });
+// Mobile menu
+const mobileBtn = document.querySelector('.mobile-menu-btn');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileOverlay = document.getElementById('mobileOverlay');
+
+function toggleMobileMenu() {
+  const isOpen = mobileMenu.classList.contains('open');
+  mobileMenu.classList.toggle('open');
+  mobileOverlay.classList.toggle('open');
+  mobileBtn.classList.toggle('open');
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+}
+function closeMobileMenu() {
+  mobileMenu.classList.remove('open');
+  mobileOverlay.classList.remove('open');
+  mobileBtn.classList.remove('open');
+  document.body.style.overflow = '';
+}
+mobileBtn.addEventListener('click', toggleMobileMenu);
+mobileOverlay.addEventListener('click', closeMobileMenu);
+document.querySelectorAll('.mobile-menu-links a, .mobile-menu-cta').forEach(link => {
+  link.addEventListener('click', closeMobileMenu);
 });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobileMenu(); });
 </script>
 
 </body>
